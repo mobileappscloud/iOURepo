@@ -22,6 +22,8 @@
 		88201B4C189D70A000CC298C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88201B30189D70A000CC298C /* CoreData.framework */; };
 		88201B54189D70A000CC298C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88201B52189D70A000CC298C /* InfoPlist.strings */; };
 		88201B56189D70A000CC298C /* iOUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88201B55189D70A000CC298C /* iOUTests.m */; };
+		88201B60189D70DE00CC298C /* iOUStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88201B5F189D70DE00CC298C /* iOUStoryBoard.storyboard */; };
+		88201B66189D72AE00CC298C /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88201B65189D72AE00CC298C /* HomeTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		88201B51189D70A000CC298C /* iOUTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOUTests-Info.plist"; sourceTree = "<group>"; };
 		88201B53189D70A000CC298C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		88201B55189D70A000CC298C /* iOUTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOUTests.m; sourceTree = "<group>"; };
+		88201B5F189D70DE00CC298C /* iOUStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iOUStoryBoard.storyboard; sourceTree = "<group>"; };
+		88201B64189D72AE00CC298C /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
+		88201B65189D72AE00CC298C /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +122,9 @@
 			children = (
 				88201B3B189D70A000CC298C /* FBCDAppDelegate.h */,
 				88201B3C189D70A000CC298C /* FBCDAppDelegate.m */,
+				88201B5F189D70DE00CC298C /* iOUStoryBoard.storyboard */,
+				88201B64189D72AE00CC298C /* HomeTableViewController.h */,
+				88201B65189D72AE00CC298C /* HomeTableViewController.m */,
 				88201B41189D70A000CC298C /* Images.xcassets */,
 				88201B3E189D70A000CC298C /* iOU.xcdatamodeld */,
 				88201B33189D70A000CC298C /* Supporting Files */,
@@ -229,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88201B60189D70DE00CC298C /* iOUStoryBoard.storyboard in Resources */,
 				88201B37189D70A000CC298C /* InfoPlist.strings in Resources */,
 				88201B42189D70A000CC298C /* Images.xcassets in Resources */,
 			);
@@ -249,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88201B66189D72AE00CC298C /* HomeTableViewController.m in Sources */,
 				88201B39189D70A000CC298C /* main.m in Sources */,
 				88201B3D189D70A000CC298C /* FBCDAppDelegate.m in Sources */,
 				88201B40189D70A000CC298C /* iOU.xcdatamodeld in Sources */,
