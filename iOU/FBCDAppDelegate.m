@@ -20,6 +20,7 @@
     return YES;
     //another code changes
     //small change
+    //another minor change
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
