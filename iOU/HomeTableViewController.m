@@ -15,6 +15,30 @@
 @implementation HomeTableViewController
 @synthesize myArray;
 
+-(NSManagedObjectContext *)managedObjectContext
+{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)])
+    {
+        context = [delegate managedObjectContext];
+    }
+    
+    return context;
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"OwedMoney"];
+    myArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    
+    [self.tableView reloadData];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -22,6 +46,7 @@
         // Custom initialization
     }
     return self;
+
 }
 
 - (void)viewDidLoad
@@ -53,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return myArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,10 +87,31 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     
-    cell.textLabel.text = @"Blank owes you blank amount of money";
-    cell.detailTextLabel.text = @"The money is due by this time: blank";
-   
+    NSManagedObject *data = [myArray objectAtIndex:indexPath.row];
+    [cell.textLabel setText:[NSString stringWithFormat:@"You owe %@ $%@ USD", [data valueForKey:@"youOweThisPerson"], [data valueForKey:@"amountYouOwe"]]];
+    cell.detailTextLabel.text = @"Edit this later to get the due date";
     return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [context deleteObject:[myArray objectAtIndex:indexPath.row]];
+        
+        NSError *error = nil;
+        if (![context save:&error])
+        {
+            NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+            return;
+        }
+        
+        [myArray removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 /*

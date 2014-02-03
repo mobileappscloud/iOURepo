@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cTN-fe-2eg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nUP-YD-I4H">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Home-->
+        <!--Home - Home-->
+        <scene sceneID="QTD-MY-LHe">
+            <objects>
+                <viewController id="7Cw-Sv-5K7" customClass="Home" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="05O-zR-gwH"/>
+                        <viewControllerLayoutGuide type="bottom" id="d5o-hy-V54"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jaj-CP-z0V">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwY-w5-gPn">
+                                <rect key="frame" x="139" y="225" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="6Ik-AI-e8S"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8CI-Jc-m4u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="371" y="123"/>
+        </scene>
+        <!--Navigation Controller - Money Owed-->
         <scene sceneID="HTU-wU-bYY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cTN-fe-2eg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="YLh-9E-gxY"/>
+                    <tabBarItem key="tabBarItem" title="Money Owed" id="YLh-9E-gxY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YNe-5J-hwj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -21,7 +48,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NN3-NV-IGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="283" y="87"/>
+            <point key="canvasLocation" x="809" y="87"/>
         </scene>
         <!--Home Table View Controller - Home-->
         <scene sceneID="tRy-oa-wKd">
@@ -66,12 +93,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xnu-Un-Nde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="702" y="87"/>
+            <point key="canvasLocation" x="1228" y="87"/>
         </scene>
-        <!--View Controller - $ Someone owes You-->
+        <!--Money Someone Owes You View Controller - $ Someone owes You-->
         <scene sceneID="b1q-9M-WdG">
             <objects>
-                <viewController id="g28-AW-Wjd" sceneMemberID="viewController">
+                <viewController id="g28-AW-Wjd" customClass="MoneySomeoneOwesYouViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kUC-BS-3Fn"/>
                         <viewControllerLayoutGuide type="bottom" id="yQl-JZ-ivt"/>
@@ -133,10 +160,34 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount Owed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BE-OG-n5c">
+                                <rect key="frame" x="20" y="116" width="115" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="big-Oe-0i0">
+                                <rect key="frame" x="143" y="113" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(USD)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoX-94-7ho">
+                                <rect key="frame" x="259" y="117" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="$ Someone owes You" id="Bml-1M-fSC"/>
+                    <connections>
+                        <outlet property="amtTheyOwe" destination="big-Oe-0i0" id="y4R-a9-MiQ"/>
+                        <outlet property="personWhoOwesYouDueDate" destination="ZBu-aX-mNE" id="HqF-D4-Nnq"/>
+                        <outlet property="personWhoOwesYouMoney" destination="dwr-u0-gfQ" id="fzn-Ak-Do1"/>
+                        <outlet property="save" destination="aGX-iU-Ou3" id="CEm-Vn-Xkd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dkn-OK-BZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,6 +204,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="Zdk-dN-7SU" kind="relationship" relationship="viewControllers" id="8rD-fY-rpd"/>
                         <segue destination="cTN-fe-2eg" kind="relationship" relationship="viewControllers" id="VBw-li-NfR"/>
                         <segue destination="R6t-Xa-Hul" kind="relationship" relationship="viewControllers" id="mUf-TT-LQ9"/>
                         <segue destination="g28-AW-Wjd" kind="relationship" relationship="viewControllers" id="7FQ-Wb-MK3"/>
@@ -162,10 +214,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="299" y="834"/>
         </scene>
-        <!--View Controller - $ You Owe-->
+        <!--Money You Owe View Controller - $ You Owe-->
         <scene sceneID="p4w-fU-0eB">
             <objects>
-                <viewController id="R6t-Xa-Hul" sceneMemberID="viewController">
+                <viewController id="R6t-Xa-Hul" customClass="MoneyYouOweViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oNo-1z-04G"/>
                         <viewControllerLayoutGuide type="bottom" id="Ogg-Hb-s0s"/>
@@ -187,13 +239,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Due by:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZh-dP-JjH">
-                                <rect key="frame" x="20" y="143" width="60" height="21"/>
+                                <rect key="frame" x="20" y="153" width="60" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="swR-8Q-Ppm">
-                                <rect key="frame" x="20" y="172" width="280" height="162"/>
+                                <rect key="frame" x="20" y="188" width="280" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="412973531.18413299">
                                     <!--2014-02-01 18:52:11 +0000-->
@@ -221,20 +273,65 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </timeZone>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4c-x8-u0f">
-                                <rect key="frame" x="20" y="359" width="280" height="53"/>
+                                <rect key="frame" x="20" y="370" width="280" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="save:" destination="R6t-Xa-Hul" eventType="touchUpInside" id="ief-f3-ZjP"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount owed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIa-30-Xv4">
+                                <rect key="frame" x="20" y="124" width="112" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tiD-Ee-6rD">
+                                <rect key="frame" x="140" y="120" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(USD)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4m8-Va-ggj">
+                                <rect key="frame" x="259" y="124" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="$ You Owe" id="dRh-QO-o0O"/>
+                    <connections>
+                        <outlet property="amtYouOwe" destination="tiD-Ee-6rD" id="tQO-cw-EkL"/>
+                        <outlet property="personYouOweDueDate" destination="swR-8Q-Ppm" id="7eA-VM-uqI"/>
+                        <outlet property="personYouOweMoney" destination="Dwk-WB-kgf" id="1e3-V9-WIZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L69-x2-1Gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="833" y="844"/>
+        </scene>
+        <!--Navigation Controller - Home-->
+        <scene sceneID="eV8-DB-b3Q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zdk-dN-7SU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="7DN-cj-zh3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sUh-bj-9BZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7Cw-Sv-5K7" kind="relationship" relationship="rootViewController" id="w9b-S1-c3N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gsA-eO-efc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-155" y="123"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

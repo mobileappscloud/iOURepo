@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		880B6D91189F067700B785B7 /* MoneyYouOweViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B6D90189F067700B785B7 /* MoneyYouOweViewController.m */; };
+		880B6D94189F068A00B785B7 /* MoneySomeoneOwesYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B6D93189F068A00B785B7 /* MoneySomeoneOwesYouViewController.m */; };
+		880B6D97189F087600B785B7 /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B6D96189F087600B785B7 /* Home.m */; };
+		880B6D9A189F08DA00B785B7 /* OwedMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 880B6D99189F08DA00B785B7 /* OwedMoney.m */; };
 		88201B2B189D70A000CC298C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88201B2A189D70A000CC298C /* Foundation.framework */; };
 		88201B2D189D70A000CC298C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88201B2C189D70A000CC298C /* CoreGraphics.framework */; };
 		88201B2F189D70A000CC298C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88201B2E189D70A000CC298C /* UIKit.framework */; };
@@ -37,6 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		880B6D8F189F067700B785B7 /* MoneyYouOweViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyYouOweViewController.h; sourceTree = "<group>"; };
+		880B6D90189F067700B785B7 /* MoneyYouOweViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneyYouOweViewController.m; sourceTree = "<group>"; };
+		880B6D92189F068A00B785B7 /* MoneySomeoneOwesYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneySomeoneOwesYouViewController.h; sourceTree = "<group>"; };
+		880B6D93189F068A00B785B7 /* MoneySomeoneOwesYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneySomeoneOwesYouViewController.m; sourceTree = "<group>"; };
+		880B6D95189F087600B785B7 /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
+		880B6D96189F087600B785B7 /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
+		880B6D98189F08DA00B785B7 /* OwedMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwedMoney.h; sourceTree = "<group>"; };
+		880B6D99189F08DA00B785B7 /* OwedMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwedMoney.m; sourceTree = "<group>"; };
 		88201B27189D70A000CC298C /* iOU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88201B2A189D70A000CC298C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88201B2C189D70A000CC298C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,11 +134,19 @@
 			children = (
 				88201B3B189D70A000CC298C /* FBCDAppDelegate.h */,
 				88201B3C189D70A000CC298C /* FBCDAppDelegate.m */,
-				88201B5F189D70DE00CC298C /* iOUStoryBoard.storyboard */,
 				88201B64189D72AE00CC298C /* HomeTableViewController.h */,
 				88201B65189D72AE00CC298C /* HomeTableViewController.m */,
+				88201B5F189D70DE00CC298C /* iOUStoryBoard.storyboard */,
+				880B6D8F189F067700B785B7 /* MoneyYouOweViewController.h */,
+				880B6D90189F067700B785B7 /* MoneyYouOweViewController.m */,
 				88201B41189D70A000CC298C /* Images.xcassets */,
+				880B6D95189F087600B785B7 /* Home.h */,
+				880B6D96189F087600B785B7 /* Home.m */,
 				88201B3E189D70A000CC298C /* iOU.xcdatamodeld */,
+				880B6D92189F068A00B785B7 /* MoneySomeoneOwesYouViewController.h */,
+				880B6D93189F068A00B785B7 /* MoneySomeoneOwesYouViewController.m */,
+				880B6D98189F08DA00B785B7 /* OwedMoney.h */,
+				880B6D99189F08DA00B785B7 /* OwedMoney.m */,
 				88201B33189D70A000CC298C /* Supporting Files */,
 			);
 			path = iOU;
@@ -259,7 +279,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				88201B66189D72AE00CC298C /* HomeTableViewController.m in Sources */,
+				880B6D91189F067700B785B7 /* MoneyYouOweViewController.m in Sources */,
+				880B6D94189F068A00B785B7 /* MoneySomeoneOwesYouViewController.m in Sources */,
 				88201B39189D70A000CC298C /* main.m in Sources */,
+				880B6D97189F087600B785B7 /* Home.m in Sources */,
+				880B6D9A189F08DA00B785B7 /* OwedMoney.m in Sources */,
 				88201B3D189D70A000CC298C /* FBCDAppDelegate.m in Sources */,
 				88201B40189D70A000CC298C /* iOU.xcdatamodeld in Sources */,
 			);
@@ -462,6 +486,7 @@
 				88201B5B189D70A000CC298C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88201B5C189D70A000CC298C /* Build configuration list for PBXNativeTarget "iOUTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +495,7 @@
 				88201B5E189D70A000CC298C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
