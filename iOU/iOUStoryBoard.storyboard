@@ -50,7 +50,7 @@
             </objects>
             <point key="canvasLocation" x="809" y="87"/>
         </scene>
-        <!--Home Table View Controller - Home-->
+        <!--Home Table View Controller - Owed Money-->
         <scene sceneID="tRy-oa-wKd">
             <objects>
                 <tableViewController id="EQT-vt-GXc" customClass="HomeTableViewController" sceneMemberID="viewController">
@@ -89,7 +89,7 @@
                             <outlet property="delegate" destination="EQT-vt-GXc" id="z3y-eN-Gt3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Home" id="xBU-S0-tam"/>
+                    <navigationItem key="navigationItem" title="Owed Money" id="xBU-S0-tam"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xnu-Un-Nde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,7 +125,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZBu-aX-mNE">
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZBu-aX-mNE">
                                 <rect key="frame" x="20" y="174" width="280" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="412973677.40569198">
@@ -159,6 +159,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="save:" destination="g28-AW-Wjd" eventType="touchUpInside" id="ZjL-Up-Bnj"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount Owed:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BE-OG-n5c">
                                 <rect key="frame" x="20" y="116" width="115" height="21"/>
@@ -244,8 +247,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="swR-8Q-Ppm">
-                                <rect key="frame" x="20" y="188" width="280" height="162"/>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="swR-8Q-Ppm">
+                                <rect key="frame" x="20" y="175" width="280" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="412973531.18413299">
                                     <!--2014-02-01 18:52:11 +0000-->
@@ -273,7 +276,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </timeZone>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4c-x8-u0f">
-                                <rect key="frame" x="20" y="370" width="280" height="53"/>
+                                <rect key="frame" x="20" y="363" width="280" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

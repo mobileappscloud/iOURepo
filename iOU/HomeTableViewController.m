@@ -13,7 +13,7 @@
 @end
 
 @implementation HomeTableViewController
-@synthesize myArray;
+@synthesize YouOweArray, SomeonesOwesYouArray, MyArray;
 
 -(NSManagedObjectContext *)managedObjectContext
 {
@@ -34,7 +34,11 @@
     
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"OwedMoney"];
-    myArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSFetchRequest *myFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TheyOweMoney"];
+    YouOweArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    SomeonesOwesYouArray = [[managedObjectContext executeFetchRequest:myFetchRequest error:nil] mutableCopy];
+    MyArray = [[NSMutableArray alloc] initWithObjects:YouOweArray, SomeonesOwesYouArray, nil];
+    
     
     [self.tableView reloadData];
 }
@@ -73,12 +77,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [MyArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return myArray.count;
+    return [[MyArray objectAtIndex:section] count];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+  if (section == 0)
+      return @"You Owe";
+    else if(section == 1)
+        return @"They Owe";
+    else{
+        return @"Blah";
+    }
+      
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,10 +104,27 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     
-    NSManagedObject *data = [myArray objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[NSString stringWithFormat:@"You owe %@ $%@ USD", [data valueForKey:@"youOweThisPerson"], [data valueForKey:@"amountYouOwe"]]];
-    cell.detailTextLabel.text = @"Edit this later to get the due date";
-    return cell;
+    if (indexPath.section == 0)
+    {
+        
+        
+        NSManagedObject *YouOweData = [YouOweArray objectAtIndex:indexPath.row];
+        
+
+        [cell.textLabel setText:[NSString stringWithFormat:@"You owe %@ $%@ USD", [YouOweData valueForKey:@"youOweThisPerson"], [YouOweData valueForKey:@"amountYouOwe"]]];
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"Due by %@", [YouOweData valueForKey:@"youOweDate"]]];
+
+    }
+    
+    else if (indexPath.section == 1)
+    {
+        NSManagedObject *TheyOweYouData = [SomeonesOwesYouArray objectAtIndex:indexPath.row];
+        
+        [cell.textLabel setText:[NSString stringWithFormat:@"%@ owes you $%@ USD", [TheyOweYouData valueForKey:@"name"], [TheyOweYouData valueForKey:@"amountOwed"]]];
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"Due by %@", [TheyOweYouData valueForKey:@"dueDate"]]];
+        
+    }
+         return cell;
 }
 
 
@@ -98,9 +132,9 @@
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     
-    if (editingStyle == UITableViewCellEditingStyleDelete)
+    if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.section == 0)
     {
-        [context deleteObject:[myArray objectAtIndex:indexPath.row]];
+        [context deleteObject:[YouOweArray objectAtIndex:indexPath.row]];
         
         NSError *error = nil;
         if (![context save:&error])
@@ -109,9 +143,26 @@
             return;
         }
         
-        [myArray removeObjectAtIndex:indexPath.row];
+        [YouOweArray removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+    
+    else  if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.section == 1)
+    {
+        [context deleteObject:[SomeonesOwesYouArray objectAtIndex:indexPath.row]];
+        
+        NSError *error = nil;
+        if (![context save:&error])
+        {
+            NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+            return;
+        }
+        
+        [SomeonesOwesYouArray removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    
 }
 
 /*

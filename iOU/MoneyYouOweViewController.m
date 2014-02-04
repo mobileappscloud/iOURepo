@@ -49,7 +49,7 @@
     
     NSError *error;
     self.dataArray =[managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    self.title = @"Data Test";
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -72,10 +72,18 @@
 }
 
 - (IBAction)save:(id)sender {
+    NSDate *choice = [personYouOweDueDate date];
+    
     NSManagedObjectContext *context =  [self managedObjectContext];
     OwedMoney *owedMoney = [NSEntityDescription insertNewObjectForEntityForName:@"OwedMoney" inManagedObjectContext:context];
+    
     [owedMoney setValue:[NSNumber numberWithInteger:[[amtYouOwe text] integerValue]] forKey:@"amountYouOwe"];
     [owedMoney setValue:personYouOweMoney.text forKey:@"youOweThisPerson"];
+    [owedMoney setValue:choice forKey:@"youOweDate"];
+    NSLog(@"%@", choice);
+    
+    
+    
     
     NSError *error;
     

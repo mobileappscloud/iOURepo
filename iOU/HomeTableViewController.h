@@ -12,5 +12,7 @@
 {
     
 }
-@property (nonatomic, strong)NSMutableArray *myArray;
+@property (nonatomic, strong)NSMutableArray *YouOweArray;
+@property (nonatomic, strong)NSMutableArray *SomeonesOwesYouArray;
+@property (nonatomic, strong)NSMutableArray *MyArray;
 @end

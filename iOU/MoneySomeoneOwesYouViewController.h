@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MoneySomeoneOwesYouViewController : UIViewController
+@interface MoneySomeoneOwesYouViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *personWhoOwesYouMoney;
 @property (weak, nonatomic) IBOutlet UIDatePicker *personWhoOwesYouDueDate;
 @property (weak, nonatomic) IBOutlet UIButton *save;
 @property (weak, nonatomic) IBOutlet UITextField *amtTheyOwe;
+@property (strong)NSArray *dataArray;
+@property (nonatomic, strong)NSManagedObjectContext *managedObjectContext;
+- (IBAction)save:(id)sender;
 
 @end
