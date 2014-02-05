@@ -58,6 +58,7 @@
     [super viewDidLoad];
     
     
+
     //test for github
 
     // Uncomment the following line to preserve selection between presentations.
@@ -163,6 +164,34 @@
     }
     
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+   
+    
+    
+    if (indexPath.section == 0)
+    {
+        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"OwedMoney"];
+        NSMutableArray *storedCellNumbers = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+         NSString *cellNumber = [NSString stringWithFormat:@"%@", [storedCellNumbers valueForKey:@"youOweCellNum"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:cellNumber]];
+
+    }
+    
+    else if (indexPath.section == 1)
+    {
+        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+        NSFetchRequest *myFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TheyOweMoney"];
+        NSMutableArray *storedCellNums = [[managedObjectContext executeFetchRequest:myFetchRequest error:nil] mutableCopy];
+         NSString *ThecellNumber = [NSString stringWithFormat:@"%@", [storedCellNums valueForKey:@"theyOweCellNum"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ThecellNumber]];
+
+    }
 }
 
 /*

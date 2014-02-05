@@ -16,5 +16,7 @@
 @property (strong)NSArray *dataArray;
 @property (nonatomic, strong)NSManagedObjectContext *managedObjectContext;
 - (IBAction)save:(id)sender;
+- (IBAction)addContact:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *cellNum;
 
 @end

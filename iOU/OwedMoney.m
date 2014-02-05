@@ -2,7 +2,7 @@
 //  OwedMoney.m
 //  iOU
 //
-//  Created by iMac on 2/2/14.
+//  Created by iMac on 2/4/14.
 //  Copyright (c) 2014 Testflight. All rights reserved.
 //
 
@@ -11,11 +11,12 @@
 
 @implementation OwedMoney
 
-@dynamic personWhoOwesYou;
-@dynamic youOweThisPerson;
-@dynamic personOweDate;
-@dynamic youOweDate;
-@dynamic amountYouOwe;
 @dynamic amountTheyOwe;
+@dynamic amountYouOwe;
+@dynamic personOweDate;
+@dynamic personWhoOwesYou;
+@dynamic youOweDate;
+@dynamic youOweThisPerson;
+@dynamic youOweCellNum;
 
 @end

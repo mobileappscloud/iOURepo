@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface MoneyYouOweViewController : UIViewController <UITextFieldDelegate>
+@interface MoneyYouOweViewController : UIViewController <UITextFieldDelegate, ABPeoplePickerNavigationControllerDelegate>
 {
     
 }
@@ -18,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *amtYouOwe;
 @property (nonatomic, strong)NSManagedObjectContext *managedObjectContext;
 @property (strong) NSArray *dataArray;
+- (IBAction)addContact:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *cellNum;
 
 @end

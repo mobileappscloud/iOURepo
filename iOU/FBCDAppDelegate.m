@@ -18,13 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   
-        
-    
-    
-    
-    
-    return YES;
+   return YES;
     //another code changes
     //small change
     //another minor change

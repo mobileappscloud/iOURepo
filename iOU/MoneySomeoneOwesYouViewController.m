@@ -39,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     amtTheyOwe.delegate = self;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -75,10 +76,13 @@
     
     NSManagedObjectContext *context =  [self managedObjectContext];
     TheyOweMoney *owedMoney = [NSEntityDescription insertNewObjectForEntityForName:@"TheyOweMoney" inManagedObjectContext:context];
+    [owedMoney setValue:choice forKey:@"dueDate"];
     
     [owedMoney setValue:[NSNumber numberWithInteger:[[amtTheyOwe text] integerValue]] forKey:@"amountOwed"];
     [owedMoney setValue:personWhoOwesYouMoney.text forKey:@"name"];
-    [owedMoney setValue:choice forKey:@"dueDate"];
+    
+    NSLog(@"%@", choice);
+    
     
     
     
@@ -94,6 +98,11 @@
         UIAlertView *myAlertview = [[UIAlertView alloc] initWithTitle:@"Success!" message:@"Data successfully saved!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
         [myAlertview show];
     }
+    
+}
+
+- (IBAction)addContact:(id)sender {
+    
     
 }
 @end

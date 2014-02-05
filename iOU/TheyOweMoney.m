@@ -2,7 +2,7 @@
 //  TheyOweMoney.m
 //  iOU
 //
-//  Created by iMac on 2/3/14.
+//  Created by iMac on 2/4/14.
 //  Copyright (c) 2014 Testflight. All rights reserved.
 //
 
@@ -11,8 +11,9 @@
 
 @implementation TheyOweMoney
 
+@dynamic amountOwed;
 @dynamic dueDate;
 @dynamic name;
-@dynamic amountOwed;
+@dynamic theyOweCellNum;
 
 @end

@@ -2,7 +2,7 @@
 //  TheyOweMoney.h
 //  iOU
 //
-//  Created by iMac on 2/3/14.
+//  Created by iMac on 2/4/14.
 //  Copyright (c) 2014 Testflight. All rights reserved.
 //
 
@@ -12,8 +12,9 @@
 
 @interface TheyOweMoney : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * amountOwed;
 @property (nonatomic, retain) NSDate * dueDate;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * amountOwed;
+@property (nonatomic, retain) NSString * theyOweCellNum;
 
 @end

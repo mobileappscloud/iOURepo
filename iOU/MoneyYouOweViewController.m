@@ -80,6 +80,7 @@
     [owedMoney setValue:[NSNumber numberWithInteger:[[amtYouOwe text] integerValue]] forKey:@"amountYouOwe"];
     [owedMoney setValue:personYouOweMoney.text forKey:@"youOweThisPerson"];
     [owedMoney setValue:choice forKey:@"youOweDate"];
+    [owedMoney setValue:self.cellNum.text forKey:@"youOweCellNum"];
     NSLog(@"%@", choice);
     
     
@@ -101,4 +102,49 @@
     
     
 }
+- (IBAction)addContact:(id)sender {
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+    
+    [self presentViewController:picker animated:YES completion:nil];
+    
+}
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)displayPerson:(ABRecordRef)person
+{
+    NSString *name = (__bridge_transfer NSString*)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    personYouOweMoney.text = name;
+    
+    NSString *phone = nil;
+    
+    ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    
+    if (ABMultiValueGetCount(phoneNumbers) > 0)
+    {
+        phone = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
+    }
+    
+    else{
+        phone = @"[None]";
+    }
+    
+    self.cellNum.text = phone;
+    CFRelease(phoneNumbers);
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    [self displayPerson:person];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    return NO;
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+    return NO;
+}
+
 @end
