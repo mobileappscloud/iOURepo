@@ -14,7 +14,7 @@
 @end
 
 @implementation MoneySomeoneOwesYouViewController
-@synthesize dataArray, managedObjectContext, amtTheyOwe, personWhoOwesYouDueDate, personWhoOwesYouMoney;
+@synthesize dataArray, managedObjectContext, amtTheyOwe, personWhoOwesYouDueDate, personWhoOwesYouMoney, cellNum;
 
 
 - (NSManagedObjectContext *)managedObjectContext
@@ -77,7 +77,7 @@
     NSManagedObjectContext *context =  [self managedObjectContext];
     TheyOweMoney *owedMoney = [NSEntityDescription insertNewObjectForEntityForName:@"TheyOweMoney" inManagedObjectContext:context];
     [owedMoney setValue:choice forKey:@"dueDate"];
-    
+    [owedMoney setValue:cellNum.text forKey:@"theyOweCellNum"];
     [owedMoney setValue:[NSNumber numberWithInteger:[[amtTheyOwe text] integerValue]] forKey:@"amountOwed"];
     [owedMoney setValue:personWhoOwesYouMoney.text forKey:@"name"];
     
@@ -99,10 +99,63 @@
         [myAlertview show];
     }
     
+    personWhoOwesYouMoney.text = @" ";
+    amtTheyOwe.text = @" ";
+    self.cellNum.text = @" ";
 }
 
 - (IBAction)addContact:(id)sender {
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
     
+    [self presentViewController:picker animated:YES completion:nil];
     
 }
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)displayPerson:(ABRecordRef)person
+{
+    // NSManagedObjectContext *context =  [self managedObjectContext];
+    // OwedMoney *owedMoney = [NSEntityDescription insertNewObjectForEntityForName:@"OwedMoney" inManagedObjectContext:context];
+    
+    //  NSData *imgData = (__bridge_transfer NSData *)ABPersonCopyImageData(person);
+    
+    //  [owedMoney setValue:imgData forKey:@"youOwePic"];
+    
+    NSString *name = (__bridge_transfer NSString*)ABRecordCopyValue(person, kABPersonFirstNameProperty);
+    personWhoOwesYouMoney.text = name;
+    
+    NSString *phone = nil;
+    
+    ABMultiValueRef phoneNumbers = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    
+    if (ABMultiValueGetCount(phoneNumbers) > 0)
+    {
+        phone = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
+    }
+    
+    else{
+        phone = @"[None]";
+    }
+    
+    self.cellNum.text = phone;
+    CFRelease(phoneNumbers);
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    [self displayPerson:person];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    return NO;
+}
+
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+    return NO;
+}
+
+
 @end

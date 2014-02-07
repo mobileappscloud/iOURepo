@@ -72,16 +72,22 @@
 }
 
 - (IBAction)save:(id)sender {
+
     NSDate *choice = [personYouOweDueDate date];
     
     NSManagedObjectContext *context =  [self managedObjectContext];
     OwedMoney *owedMoney = [NSEntityDescription insertNewObjectForEntityForName:@"OwedMoney" inManagedObjectContext:context];
+    [owedMoney setValue:self.cellNum.text forKey:@"youOweCellNum"];
     
     [owedMoney setValue:[NSNumber numberWithInteger:[[amtYouOwe text] integerValue]] forKey:@"amountYouOwe"];
     [owedMoney setValue:personYouOweMoney.text forKey:@"youOweThisPerson"];
     [owedMoney setValue:choice forKey:@"youOweDate"];
-    [owedMoney setValue:self.cellNum.text forKey:@"youOweCellNum"];
-    NSLog(@"%@", choice);
+    
+    
+    NSLog(@"%@", self.cellNum.text);
+    
+
+
     
     
     
@@ -98,8 +104,9 @@
         [myAlertview show];
     }
     
-    
-    
+    personYouOweMoney.text = @" ";
+    amtYouOwe.text = @" ";
+    self.cellNum.text = @" ";
     
 }
 - (IBAction)addContact:(id)sender {
@@ -115,6 +122,13 @@
 }
 -(void)displayPerson:(ABRecordRef)person
 {
+   // NSManagedObjectContext *context =  [self managedObjectContext];
+   // OwedMoney *owedMoney = [NSEntityDescription insertNewObjectForEntityForName:@"OwedMoney" inManagedObjectContext:context];
+
+  //  NSData *imgData = (__bridge_transfer NSData *)ABPersonCopyImageData(person);
+    
+  //  [owedMoney setValue:imgData forKey:@"youOwePic"];
+    
     NSString *name = (__bridge_transfer NSString*)ABRecordCopyValue(person, kABPersonFirstNameProperty);
     personYouOweMoney.text = name;
     

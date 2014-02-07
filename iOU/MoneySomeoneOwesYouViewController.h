@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface MoneySomeoneOwesYouViewController : UIViewController <UITextFieldDelegate>
+@interface MoneySomeoneOwesYouViewController : UIViewController <UITextFieldDelegate, ABPeoplePickerNavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *personWhoOwesYouMoney;
 @property (weak, nonatomic) IBOutlet UIDatePicker *personWhoOwesYouDueDate;
 @property (weak, nonatomic) IBOutlet UIButton *save;

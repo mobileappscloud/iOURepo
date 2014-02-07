@@ -27,13 +27,15 @@
 		88201B56189D70A000CC298C /* iOUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88201B55189D70A000CC298C /* iOUTests.m */; };
 		88201B60189D70DE00CC298C /* iOUStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88201B5F189D70DE00CC298C /* iOUStoryBoard.storyboard */; };
 		88201B66189D72AE00CC298C /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88201B65189D72AE00CC298C /* HomeTableViewController.m */; };
+		88207BFB18A313070093BD70 /* iOU.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 88201B3E189D70A000CC298C /* iOU.xcdatamodeld */; };
+		88207BFE18A327E60093BD70 /* HistoryDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88207BFD18A327E60093BD70 /* HistoryDetailsViewController.m */; };
 		882FBFED18A085DF00866E2B /* MONAYYYY.png in Resources */ = {isa = PBXBuildFile; fileRef = 882FBFEA18A085DF00866E2B /* MONAYYYY.png */; };
 		882FBFEE18A085DF00866E2B /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 882FBFEB18A085DF00866E2B /* Home.png */; };
 		882FBFEF18A085DF00866E2B /* Check.png in Resources */ = {isa = PBXBuildFile; fileRef = 882FBFEC18A085DF00866E2B /* Check.png */; };
 		88EF489018A1B5E200FC6B60 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EF488F18A1B5E200FC6B60 /* AddressBook.framework */; };
 		88EF489218A1B5EA00FC6B60 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88EF489118A1B5EA00FC6B60 /* AddressBookUI.framework */; };
-		88EF489518A1BCA100FC6B60 /* OwedMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EF489418A1BCA100FC6B60 /* OwedMoney.m */; };
-		88EF489818A1BCA100FC6B60 /* TheyOweMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EF489718A1BCA100FC6B60 /* TheyOweMoney.m */; };
+		88FCAF2418A566DC0077FA2C /* OwedMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FCAF2318A566DC0077FA2C /* OwedMoney.m */; };
+		88FCAF2718A566DC0077FA2C /* TheyOweMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FCAF2618A566DC0077FA2C /* TheyOweMoney.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,15 +76,17 @@
 		88201B5F189D70DE00CC298C /* iOUStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iOUStoryBoard.storyboard; sourceTree = "<group>"; };
 		88201B64189D72AE00CC298C /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		88201B65189D72AE00CC298C /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		88207BFC18A327E60093BD70 /* HistoryDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryDetailsViewController.h; sourceTree = "<group>"; };
+		88207BFD18A327E60093BD70 /* HistoryDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryDetailsViewController.m; sourceTree = "<group>"; };
 		882FBFEA18A085DF00866E2B /* MONAYYYY.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MONAYYYY.png; sourceTree = "<group>"; };
 		882FBFEB18A085DF00866E2B /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
 		882FBFEC18A085DF00866E2B /* Check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Check.png; sourceTree = "<group>"; };
 		88EF488F18A1B5E200FC6B60 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		88EF489118A1B5EA00FC6B60 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		88EF489318A1BCA100FC6B60 /* OwedMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwedMoney.h; sourceTree = "<group>"; };
-		88EF489418A1BCA100FC6B60 /* OwedMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwedMoney.m; sourceTree = "<group>"; };
-		88EF489618A1BCA100FC6B60 /* TheyOweMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheyOweMoney.h; sourceTree = "<group>"; };
-		88EF489718A1BCA100FC6B60 /* TheyOweMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheyOweMoney.m; sourceTree = "<group>"; };
+		88FCAF2218A566DC0077FA2C /* OwedMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwedMoney.h; sourceTree = "<group>"; };
+		88FCAF2318A566DC0077FA2C /* OwedMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwedMoney.m; sourceTree = "<group>"; };
+		88FCAF2518A566DC0077FA2C /* TheyOweMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheyOweMoney.h; sourceTree = "<group>"; };
+		88FCAF2618A566DC0077FA2C /* TheyOweMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheyOweMoney.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,8 @@
 				88201B64189D72AE00CC298C /* HomeTableViewController.h */,
 				88201B65189D72AE00CC298C /* HomeTableViewController.m */,
 				88201B5F189D70DE00CC298C /* iOUStoryBoard.storyboard */,
+				88207BFC18A327E60093BD70 /* HistoryDetailsViewController.h */,
+				88207BFD18A327E60093BD70 /* HistoryDetailsViewController.m */,
 				880B6D92189F068A00B785B7 /* MoneySomeoneOwesYouViewController.h */,
 				880B6D93189F068A00B785B7 /* MoneySomeoneOwesYouViewController.m */,
 				880B6D8F189F067700B785B7 /* MoneyYouOweViewController.h */,
@@ -164,11 +170,11 @@
 				88201B41189D70A000CC298C /* Images.xcassets */,
 				880B6D95189F087600B785B7 /* Home.h */,
 				880B6D96189F087600B785B7 /* Home.m */,
+				88FCAF2218A566DC0077FA2C /* OwedMoney.h */,
+				88FCAF2518A566DC0077FA2C /* TheyOweMoney.h */,
+				88FCAF2618A566DC0077FA2C /* TheyOweMoney.m */,
+				88FCAF2318A566DC0077FA2C /* OwedMoney.m */,
 				88201B3E189D70A000CC298C /* iOU.xcdatamodeld */,
-				88EF489318A1BCA100FC6B60 /* OwedMoney.h */,
-				88EF489418A1BCA100FC6B60 /* OwedMoney.m */,
-				88EF489618A1BCA100FC6B60 /* TheyOweMoney.h */,
-				88EF489718A1BCA100FC6B60 /* TheyOweMoney.m */,
 				88201B33189D70A000CC298C /* Supporting Files */,
 			);
 			path = iOU;
@@ -279,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88207BFB18A313070093BD70 /* iOU.xcdatamodeld in Resources */,
 				88201B60189D70DE00CC298C /* iOUStoryBoard.storyboard in Resources */,
 				882FBFED18A085DF00866E2B /* MONAYYYY.png in Resources */,
 				882FBFEE18A085DF00866E2B /* Home.png in Resources */,
@@ -303,15 +310,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88FCAF2718A566DC0077FA2C /* TheyOweMoney.m in Sources */,
 				88201B66189D72AE00CC298C /* HomeTableViewController.m in Sources */,
 				880B6D91189F067700B785B7 /* MoneyYouOweViewController.m in Sources */,
 				880B6D94189F068A00B785B7 /* MoneySomeoneOwesYouViewController.m in Sources */,
 				88201B39189D70A000CC298C /* main.m in Sources */,
 				880B6D97189F087600B785B7 /* Home.m in Sources */,
-				88EF489818A1BCA100FC6B60 /* TheyOweMoney.m in Sources */,
+				88FCAF2418A566DC0077FA2C /* OwedMoney.m in Sources */,
 				88201B3D189D70A000CC298C /* FBCDAppDelegate.m in Sources */,
 				88201B40189D70A000CC298C /* iOU.xcdatamodeld in Sources */,
-				88EF489518A1BCA100FC6B60 /* OwedMoney.m in Sources */,
+				88207BFE18A327E60093BD70 /* HistoryDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,13 +7,16 @@
 //
 
 #import "HomeTableViewController.h"
+#import "MoneyYouOweViewController.h"
+#import "MoneySomeoneOwesYouViewController.h"
+#import "HistoryDetailsViewController.h"
 
 @interface HomeTableViewController ()
 
 @end
 
 @implementation HomeTableViewController
-@synthesize YouOweArray, SomeonesOwesYouArray, MyArray;
+@synthesize YouOweArray, SomeonesOwesYouArray, MyArray, myTableView;
 
 -(NSManagedObjectContext *)managedObjectContext
 {
@@ -28,6 +31,51 @@
     
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // HistoryDetailsViewController *HDV = [self.storyboard instantiateViewControllerWithIdentifier:@"HistoryDetails"];
+    // [self.navigationController pushViewController:HDV animated:YES];
+    NSLog(@"index path section--%i",[indexPath section]);
+    NSLog(@"index path row--%i", indexPath.row);
+    [self performSegueWithIdentifier:@"Push" sender:indexPath];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([[segue identifier] isEqualToString:@"Push"]) {
+        HistoryDetailsViewController *detailVC=(HistoryDetailsViewController*)segue.destinationViewController;
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        
+        
+        NSManagedObject *YouOweData = [YouOweArray objectAtIndex:indexPath.row];
+        NSManagedObject *TheyOweData = [SomeonesOwesYouArray objectAtIndex:indexPath.row];
+        
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        if (indexPath.section == 0)
+        {
+            
+            [detailVC setCellNumString:[NSString stringWithFormat:@"%@", [YouOweData valueForKey:@"youOweCellNum"]]];
+            
+            
+            
+            [detailVC setDateString:[NSString stringWithFormat:@"%@", cell.detailTextLabel.text]];
+        }
+        
+        else if (indexPath.section == 1)
+        {
+            
+            [detailVC setCellNumString:[NSString stringWithFormat:@"%@", [TheyOweData valueForKey:@"theyOweCellNum"]]];
+            [detailVC setDateString:[NSString stringWithFormat:@"%@", cell.detailTextLabel.text]];
+        }
+        
+        
+    }
+}
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -35,6 +83,7 @@
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"OwedMoney"];
     NSFetchRequest *myFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TheyOweMoney"];
+ 
     YouOweArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     SomeonesOwesYouArray = [[managedObjectContext executeFetchRequest:myFetchRequest error:nil] mutableCopy];
     MyArray = [[NSMutableArray alloc] initWithObjects:YouOweArray, SomeonesOwesYouArray, nil];
@@ -56,7 +105,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    NSLog(@"%@", myTableView);
+    myTableView.delegate = self;
     
 
     //test for github
@@ -83,7 +134,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[MyArray objectAtIndex:section] count];
+    
+    //return ([[MyArray objectAtIndex:section] count]);
+    if (section == 0)
+    {
+        return [YouOweArray count];
+    }
+    
+    else if (section == 1)
+    {
+        return [SomeonesOwesYouArray count];
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -99,21 +164,32 @@
     
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     
     if (indexPath.section == 0)
     {
         
         
+       
         NSManagedObject *YouOweData = [YouOweArray objectAtIndex:indexPath.row];
         
 
         [cell.textLabel setText:[NSString stringWithFormat:@"You owe %@ $%@ USD", [YouOweData valueForKey:@"youOweThisPerson"], [YouOweData valueForKey:@"amountYouOwe"]]];
         [cell.detailTextLabel setText:[NSString stringWithFormat:@"Due by %@", [YouOweData valueForKey:@"youOweDate"]]];
+        
+        
+        NSString *theDate = [NSString stringWithFormat:@"%@", [YouOweData valueForKey:@"youOweDate"]];
+        NSLog(@"%@", theDate);
+        
+        
+        
+        
 
     }
     
@@ -122,11 +198,12 @@
         NSManagedObject *TheyOweYouData = [SomeonesOwesYouArray objectAtIndex:indexPath.row];
         
         [cell.textLabel setText:[NSString stringWithFormat:@"%@ owes you $%@ USD", [TheyOweYouData valueForKey:@"name"], [TheyOweYouData valueForKey:@"amountOwed"]]];
-        [cell.detailTextLabel setText:[NSString stringWithFormat:@"Due by %@", [TheyOweYouData valueForKey:@"dueDate"]]];
+        [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@", [TheyOweYouData valueForKey:@"dueDate"]]];
         
     }
          return cell;
 }
+
 
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -163,36 +240,63 @@
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
     
+    [self.tableView reloadData];
+    
     
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+/*
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSManagedObjectContext *context = [self managedObjectContext];
     
-    
-   
-    
-    
-    if (indexPath.section == 0)
+    if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"OwedMoney"];
-        NSMutableArray *storedCellNumbers = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
-         NSString *cellNumber = [NSString stringWithFormat:@"%@", [storedCellNumbers valueForKey:@"youOweCellNum"]];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:cellNumber]];
-
+        
+        if (indexPath.section == 0)
+        {
+        [context deleteObject:[YouOweArray objectAtIndex:indexPath.row]];
+        
+        NSError *error = nil;
+        if (![context save:&error])
+        {
+            NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+            return;
+        }
+    
+        
+        [YouOweArray removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+      //  [self.tableView  reloadData];
+    
+        else if (indexPath.section == 1)
+        {
+        
+        [context deleteObject:[SomeonesOwesYouArray objectAtIndex:indexPath.row]];
+        
+        
+            NSError *error = nil;
+            if (![context save:&error])
+        {
+            NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+            return;
+        }
+        
+        [SomeonesOwesYouArray removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    
+    
+    [self.tableView reloadData];
     }
     
-    else if (indexPath.section == 1)
-    {
-        NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-        NSFetchRequest *myFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TheyOweMoney"];
-        NSMutableArray *storedCellNums = [[managedObjectContext executeFetchRequest:myFetchRequest error:nil] mutableCopy];
-         NSString *ThecellNumber = [NSString stringWithFormat:@"%@", [storedCellNums valueForKey:@"theyOweCellNum"]];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ThecellNumber]];
-
-    }
+    
 }
+*/
+
+
+
 
 /*
 // Override to support conditional editing of the table view.

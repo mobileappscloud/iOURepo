@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeTableViewController : UITableViewController
+@interface HomeTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 {
     
 }
+@property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (nonatomic, strong)NSMutableArray *YouOweArray;
 @property (nonatomic, strong)NSMutableArray *SomeonesOwesYouArray;
 @property (nonatomic, strong)NSMutableArray *MyArray;
+
 @end
